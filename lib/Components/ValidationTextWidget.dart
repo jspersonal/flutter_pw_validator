@@ -19,6 +19,7 @@ class ValidationTextWidget extends StatelessWidget {
           width: SizeConfig.width! * 0.03,
           height: SizeConfig.width! * 0.03,
           child: new CircleAvatar(
+            radius: 10.0,
             child: Icon(Icons.check, color: Colors.black, size: 14,),
             backgroundColor: color,
           ),
