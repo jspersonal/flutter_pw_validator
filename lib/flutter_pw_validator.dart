@@ -17,6 +17,7 @@ class FlutterPwValidator extends StatefulWidget {
   final Function onSuccess;
   final TextEditingController controller;
   final FlutterPwValidatorStrings? strings;
+  final MyColors? colors;
 
   FlutterPwValidator(
       {required this.width,
@@ -30,7 +31,8 @@ class FlutterPwValidator extends StatefulWidget {
       this.defaultColor = MyColors.gray,
       this.successColor = MyColors.green,
       this.failureColor = MyColors.red,
-      this.strings}) {
+      this.strings,
+      this.colors}) {
     //Initial entered size for global use
     SizeConfig.width = width;
     SizeConfig.height = height;
@@ -172,6 +174,7 @@ class _FlutterPwValidatorState extends State<FlutterPwValidator> {
                             : widget.failureColor,
                     text: entry.key,
                     value: value,
+                    textColor: widget.defaultColor,
                   );
                 }).toList()),
           )
