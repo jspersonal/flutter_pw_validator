@@ -17,7 +17,7 @@ class FlutterPwValidator extends StatefulWidget {
   final Function onSuccess;
   final TextEditingController controller;
   final FlutterPwValidatorStrings? strings;
-  final MyColors? colors;
+  final bool? validationBar;
 
   FlutterPwValidator(
       {required this.width,
@@ -32,7 +32,7 @@ class FlutterPwValidator extends StatefulWidget {
       this.successColor = MyColors.green,
       this.failureColor = MyColors.red,
       this.strings,
-      this.colors}) {
+      this.validationBar = true}) {
     //Initial entered size for global use
     SizeConfig.width = width;
     SizeConfig.height = height;
@@ -132,7 +132,13 @@ class _FlutterPwValidatorState extends State<FlutterPwValidator> {
       child: new Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          new Flexible(
+
+          /// If user want to show validation bar
+          /// then we show it
+          /// else we show nothing
+          /// This is a default value true
+          (widget.validationBar == true) ?
+            Flexible(
             flex: 3,
             child: new Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -148,8 +154,9 @@ class _FlutterPwValidatorState extends State<FlutterPwValidator> {
                   if (value == false)
                     new ValidationBarComponent(color: widget.defaultColor)
               ],
-            ),
-          ),
+              ),
+            )
+          : Spacer(),
           new Flexible(
             flex: 7,
             child: new Column(
@@ -175,6 +182,7 @@ class _FlutterPwValidatorState extends State<FlutterPwValidator> {
                     text: entry.key,
                     value: value,
                     textColor: widget.defaultColor,
+                    valid: entry.value,
                   );
                 }).toList()),
           )

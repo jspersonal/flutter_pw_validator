@@ -7,9 +7,10 @@ class ValidationTextWidget extends StatelessWidget {
   final String text;
   final int? value;
   final Color? textColor;
+  final bool? valid;
 
   ValidationTextWidget(
-      {required this.color, required this.text, required this.value, this.textColor = Colors.black});
+      {required this.color, required this.text, required this.value, this.textColor = Colors.black, this.valid = false});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class ValidationTextWidget extends StatelessWidget {
           height: SizeConfig.width! * 0.05,
           child: new CircleAvatar(
             radius: 10.0,
-            child: Icon(Icons.check, color: Colors.black, size: 14,),
+            child: Icon((valid == true) ? Icons.check : Icons.clear, color: Colors.black, size: 14,),
             backgroundColor: color,
           ),
         ),

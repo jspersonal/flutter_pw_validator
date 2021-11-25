@@ -1,8 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_pw_validator/Resource/Strings.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 void main() {
   runApp(MyApp());
+}
+
+class SpanishStrings implements FlutterPwValidatorStrings{
+
+  @override
+  String get atLeast => '- caracteres';
+
+  @override
+  String get numericCharacters => '- caracter numérico';
+
+  @override
+  String get specialCharacters => '- caracter especial';
+
+  @override
+  String get uppercaseLetters => '- mayúscula';
 }
 
 class MyApp extends StatelessWidget {
@@ -55,15 +71,15 @@ class AppHome extends StatelessWidget {
                   new FlutterPwValidator(
                     controller: controller,
                     minLength: 8,
-                    uppercaseCharCount: 2,
-                    numericCharCount: 3,
-                    specialCharCount: 1,
+                    uppercaseCharCount: 1,
+                    numericCharCount: 1,
+                    specialCharCount: 0,
                     width: 400,
-                    height: 150,
+                    height: 105,
+                    validationBar: true,
+                    strings: SpanishStrings(),
                     onSuccess: () {
                       print("Matched");
-                      Scaffold.of(context).showSnackBar(new SnackBar(
-                          content: new Text("Password is matched")));
                     },
                   ),
                 ],
