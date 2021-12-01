@@ -73,9 +73,10 @@ class AppHome extends StatelessWidget {
                     minLength: 8,
                     uppercaseCharCount: 1,
                     numericCharCount: 1,
-                    specialCharCount: 0,
+                    specialCharCount: 1,
+                    regExpSpecialChar: r"[@#$%^&'*:;()+_=.,-]",
                     width: 400,
-                    height: 105,
+                    height: 150,
                     validationBar: true,
                     strings: SpanishStrings(),
                     onSuccess: () {

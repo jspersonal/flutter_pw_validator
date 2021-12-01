@@ -18,6 +18,7 @@ class FlutterPwValidator extends StatefulWidget {
   final TextEditingController controller;
   final FlutterPwValidatorStrings? strings;
   final bool? validationBar;
+  final String? regExpSpecialChar;
 
   FlutterPwValidator(
       {required this.width,
@@ -28,6 +29,7 @@ class FlutterPwValidator extends StatefulWidget {
       this.uppercaseCharCount = 0,
       this.numericCharCount = 0,
       this.specialCharCount = 0,
+      this.regExpSpecialChar = "",
       this.defaultColor = MyColors.gray,
       this.successColor = MyColors.green,
       this.failureColor = MyColors.red,
@@ -88,7 +90,8 @@ class _FlutterPwValidatorState extends State<FlutterPwValidator> {
         validator.hasMinSpecialChar,
         widget.controller,
         widget.translatedStrings.specialCharacters,
-        hasMinSpecialChar);
+        hasMinSpecialChar,
+        strPattern: widget.regExpSpecialChar!);
 
     /// Checks if all condition are true then call the user callback
     int conditionsCount = conditionsHelper.getter()!.length;

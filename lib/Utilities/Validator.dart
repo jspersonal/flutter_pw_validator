@@ -19,9 +19,9 @@ class Validator {
   }
 
   //Checks if password has at least specialCount special character matches
-  bool hasMinSpecialChar(String password, int specialCount) {
+  bool hasMinSpecialChar(String password, int specialCount, { String? strPattern = r"^(.*?[$&+,\:;/=?@#|'<>.^*()_%!-])"}) {
     String pattern =
-        r"^(.*?[$&+,\:;/=?@#|'<>.^*()_%!-]){" + specialCount.toString() + ",}";
+        strPattern! + "{" + specialCount.toString() + ",}";
     return password.contains(new RegExp(pattern));
   }
 }

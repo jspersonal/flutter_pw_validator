@@ -21,12 +21,16 @@ class ConditionsHelper {
 
   /// Checks condition new value and passed validator, sets that in map and return new value;
   dynamic checkCondition(int userRequestedValue, Function validator,
-      TextEditingController controller, String key, dynamic oldValue) {
+      TextEditingController controller, String key, dynamic oldValue, { String strPattern = ''}) {
     dynamic newValue;
 
     /// If the userRequested Value is grater than 0 that means user select them and we have to check new value;
     if (userRequestedValue > 0) {
-      newValue = validator(controller.text, userRequestedValue);
+      if (strPattern != '') {
+        newValue = validator(controller.text, userRequestedValue, strPattern: strPattern);
+      } else {
+        newValue = validator(controller.text, userRequestedValue);
+      }
     } else
       newValue = null;
 
